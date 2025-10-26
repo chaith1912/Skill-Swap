@@ -3,7 +3,8 @@ import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Register from './pages/Register';
 import Login from './pages/Login';
-// You can delete the 'useState' import and the default App.css content
+import Navbar from './components/Navbar'; 
+
 
 function App() {
   return (

@@ -35,3 +35,9 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
 });
+
+// Error handling middleware
+import { notFound, errorHandler } from './middleware/errorMiddleware.js';
+
+app.use(notFound);       
+app.use(errorHandler); 
