@@ -1,12 +1,15 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../hooks/useAuth.jsx'; // <-- 1. Import from the new hooks file
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const token = localStorage.getItem('token');
+  // 2. Call the hook to get token and logout
+  const { token, logout } = useAuth(); 
 
   const onLogout = () => {
-    localStorage.removeItem('token');
+    // 3. Use the logout function from the context
+    logout(); 
     alert('Logged out');
     navigate('/login');
   };
@@ -15,14 +18,13 @@ const Navbar = () => {
     <nav className="navbar">
       <Link to="/" className="navbar-brand">Skill-Swap</Link>
       <div className="navbar-links">
+        {/* This logic stays the same and now works! */}
         {token ? (
-          // If user IS logged in
           <>
             <Link to="/profile">My Profile</Link>
             <button onClick={onLogout} className="logout-button">Logout</button>
           </>
         ) : (
-          // If user IS NOT logged in
           <>
             <Link to="/login">Login</Link>
             <Link to="/register">Register</Link>

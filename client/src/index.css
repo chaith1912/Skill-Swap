@@ -56,3 +56,59 @@ button[type="submit"] {
 button[type="submit"]:hover {
   background-color: #0056b3;
 }
+
+/* Add to index.css */
+.navbar {
+  background-color: #333;
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.navbar-links a {
+  color: white;
+  text-decoration: none;
+  margin-left: 1rem;
+}
+
+.navbar-links a:hover {
+  text-decoration: underline;
+}
+
+.logout-button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-left: 1rem;
+  font-family: inherit;
+}
+
+.logout-button:hover {
+  text-decoration: underline;
+}
+
+/* Add padding to the main container to avoid navbar */
+.container {
+  padding-top: 80px; /* Adjust based on your navbar height */
+}
+
+/* Fix body alignment */
+body {
+  align-items: flex-start;
+}
