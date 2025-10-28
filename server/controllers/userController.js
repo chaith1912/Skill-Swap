@@ -14,6 +14,23 @@ const generateToken = (id) => {
  * @route   POST /api/users/register
  * @access  Public
  */
+
+const getUserProfile = asyncHandler(async (req, res) => {
+  // req.user was added by the 'protect' middleware
+  const user = req.user; 
+
+  if (user) {
+    res.status(200).json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+    });
+  } else {
+    res.status(404);
+    throw new Error('User not found');
+  }
+});
+
 const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body;
 
@@ -78,4 +95,4 @@ const loginUser = asyncHandler(async (req, res) => {
 });
 
 // Export the functions
-export { registerUser, loginUser };
+export { registerUser, loginUser, getUserProfile };
