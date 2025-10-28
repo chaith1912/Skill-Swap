@@ -112,3 +112,17 @@ button[type="submit"]:hover {
 body {
   align-items: flex-start;
 } 
+
+/* Styling for the logo in the navbar */
+.navbar-logo {
+  height: 40px; /* Adjust as needed */
+  width: auto;
+  vertical-align: middle; /* Aligns the image nicely with any potential text */
+  margin-right: 10px; /* Space between logo and text, if you keep text */
+}
+
+/* Ensure the brand link itself aligns things nicely */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}

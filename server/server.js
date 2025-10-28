@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 import userRoutes from './routes/userRoutes.js';
+import skillRoutes from './routes/skillRoutes.js';
 
 dotenv.config();
 
@@ -17,6 +18,7 @@ app.get("/", (req, res) => {
 
 
 app.use('/api/users', userRoutes); 
+app.use('/api/skills', skillRoutes);
 
 // MongoDB connection
 const mongoURI = process.env.MONGO_URI;

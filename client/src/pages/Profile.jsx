@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useAuth } from '../hooks/useAuth.jsx'; // Use our auth hook
+import { useAuth } from '../hooks/useAuth.jsx'; 
 
 const Profile = () => {
   const { token } = useAuth(); // Get the token from our auth context

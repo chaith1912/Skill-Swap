@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../hooks/useAuth.jsx'; // <-- 1. Import from the new hooks file
+import { useAuth } from '../hooks/useAuth.jsx';
+import SkillsLogo from '../assets/skills_logo.png';
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -16,9 +17,13 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <Link to="/" className="navbar-brand">Skill-Swap</Link>
+      {/* 2. Replace text with an <img> tag */}
+      <Link to="/" className="navbar-brand">
+        <img src={SkillsLogo} alt="Skill-Swap Logo" className="navbar-logo" />
+        {/* You can keep text here if you want it next to the logo: */}
+        {<span>Skill-Swap</span>} 
+      </Link>
       <div className="navbar-links">
-        {/* This logic stays the same and now works! */}
         {token ? (
           <>
             <Link to="/profile">My Profile</Link>

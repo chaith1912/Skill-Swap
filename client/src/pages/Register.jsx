@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../hooks/useAuth.jsx'; // <-- 1. Import from the new hooks file
+import { useAuth } from '../hooks/useAuth.jsx';
 
 const Register = () => {
   const [formData, setFormData] = useState({

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../hooks/useAuth.jsx'; // <-- 1. Import from the new hooks file
+import { useAuth } from '../hooks/useAuth.jsx';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -10,7 +10,7 @@ const Login = () => {
   });
 
   const navigate = useNavigate();
-  const { login } = useAuth(); // <-- 2. Call the hook
+  const { login } = useAuth(); 
 
   const { email, password } = formData;
 
@@ -34,7 +34,7 @@ const Login = () => {
 
       console.log(res.data);
 
-      // 3. Use the login function from the context
+   
       login(res.data.token); 
 
       alert('Login successful!');

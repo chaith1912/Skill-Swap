@@ -1,6 +1,7 @@
 import asyncHandler from 'express-async-handler';
 import User from '../models/User.js';
 import jwt from 'jsonwebtoken';
+import Skill from '../models/Skill.js';
 
 // Helper function to generate JWT
 const generateToken = (id) => {
@@ -93,6 +94,7 @@ const loginUser = asyncHandler(async (req, res) => {
     throw new Error('Invalid email or password');
   }
 });
+
 
 // Export the functions
 export { registerUser, loginUser, getUserProfile };
