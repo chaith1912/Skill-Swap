@@ -35,4 +35,14 @@ const protect = asyncHandler(async (req, res, next) => {
   }
 });
 
-export { protect };
+const admin = (req, res, next) => {
+  // 'req.user' comes from the 'protect' middleware
+  if (req.user && req.user.isAdmin) {
+    next(); // User is an admin, proceed
+  } else {
+    res.status(401); // 401 = Unauthorized
+    throw new Error('Not authorization as Admin!');
+  }
+};
+
+export { protect, admin };

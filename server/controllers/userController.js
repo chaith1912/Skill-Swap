@@ -62,6 +62,7 @@ const registerUser = asyncHandler(async (req, res) => {
       name: user.name,
       email: user.email,
       token: generateToken(user._id),
+      isAdmin: user.isAdmin,
     });
   } else {
     res.status(400);
@@ -88,6 +89,7 @@ const loginUser = asyncHandler(async (req, res) => {
       name: user.name,
       email: user.email,
       token: generateToken(user._id),
+      isAdmin: user.isAdmin,
     });
   } else {
     res.status(401); // Unauthorized
@@ -95,6 +97,17 @@ const loginUser = asyncHandler(async (req, res) => {
   }
 });
 
+//Admin access
+/**
+ * @desc    Get all users (Admin only)
+ * @route   GET /api/users
+ * @access  Private/Admin
+ */
+const getAllUsers = asyncHandler(async (req, res) => {
+  const users = await User.find({}).select('-password'); // Find all users, remove password
+  res.status(200).json(users);
+});
+
 
 // Export the functions
-export { registerUser, loginUser, getUserProfile };
+export { registerUser, loginUser, getUserProfile, getAllUsers };
