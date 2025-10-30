@@ -5,6 +5,7 @@ import Login from './pages/Login';
 import Navbar from './components/Navbar';
 import Profile from './pages/Profile.jsx';
 import ProtectedRoute from './components/ProtectedRoute.jsx';
+import CreateSkill from './pages/CreateSkill.jsx';
 
 
 function App() {
@@ -20,8 +21,11 @@ function App() {
 
           {/* Protected Routes */}
           {/* 3. Wrap your protected page(s) in this new element */}
+
           <Route element={<ProtectedRoute />}> 
             <Route path="/profile" element={<Profile />} />
+            <Route path="/create-skill" element={<CreateSkill />} />
+            
             {/* You can add more protected routes here later */}
           </Route>
 
