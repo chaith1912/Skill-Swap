@@ -6,7 +6,7 @@ import SkillsLogo from '../assets/skills_logo.png';
 const Navbar = () => {
   const navigate = useNavigate();
   // 2. Call the hook to get token and logout
-  const { token, logout } = useAuth(); 
+  const { token, isAdmin, logout } = useAuth(); 
 
   const onLogout = () => {
     // 3. Use the logout function from the context
@@ -26,6 +26,9 @@ const Navbar = () => {
       <div className="navbar-links">
         {token ? (
           <>
+            {isAdmin && (
+              <Link to="/admin/userlist" style={{color: '#ffc107'}}>Admin</Link>
+            )}
             <Link to="/create-skill">Post Skill</Link>
             <Link to="/profile">My Profile</Link>
             <button onClick={onLogout} className="logout-button">Logout</button>

@@ -35,7 +35,7 @@ const Login = () => {
       console.log(res.data);
 
    
-      login(res.data.token); 
+      login(res.data); 
 
       alert('Login successful!');
       navigate('/'); 
