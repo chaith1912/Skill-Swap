@@ -46,7 +46,7 @@ const Home = () => {
           {skills.map((skill) => (
             <div key={skill._id} className="skill-card">
               <h3>{skill.title}</h3>
-              <p><strong>Posted by:</strong> {skill.user.name}</p>
+              <p><strong>Posted by:</strong> {skill.user?.name || 'Deleted User'}</p>
               <p><strong>Category:</strong> {skill.category}</p>
               <span className={`skill-type ${skill.skillType.toLowerCase()}`}>
                 {skill.skillType}

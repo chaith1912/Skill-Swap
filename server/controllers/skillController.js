@@ -44,4 +44,39 @@ const createSkill = asyncHandler(async (req, res) => {
   res.status(201).json(createdSkill);
 });
 
-export { getSkills, createSkill };
+//veiw and delete skills for admin
+/**
+ * @desc    Delete a skill (Admin only)
+ * @route   DELETE /api/skills/:id
+ * @access  Private/Admin
+ */
+const deleteSkill = asyncHandler(async (req, res) => {
+  const skill = await Skill.findById(req.params.id);
+
+  if (skill) {
+    await Skill.deleteOne({ _id: skill._id });
+    res.status(200).json({ message: 'Skill deleted successfully' });
+  } else {
+    res.status(404);
+    throw new Error('Skill not found');
+  }
+});
+
+/**
+ * @desc    Get all skills for a specific user (Admin only)
+ * @route   GET /api/skills/user/:id
+ * @access  Private/Admin
+ */
+const getSkillsByUserId = asyncHandler(async (req, res) => {
+  // Find skills where the 'user' field matches the ID from the URL
+  const skills = await Skill.find({ user: req.params.id });
+  
+  if (skills) {
+    res.status(200).json(skills);
+  } else {
+    res.status(404);
+    throw new Error('Skills not found for this user');
+  }
+});
+
+export { getSkills, createSkill, deleteSkill, getSkillsByUserId };

@@ -108,6 +108,23 @@ const getAllUsers = asyncHandler(async (req, res) => {
   res.status(200).json(users);
 });
 
+/**
+ * @desc    Delete a user (Admin only)
+ * @route   DELETE /api/users/:id
+ * @access  Private/Admin
+ */
+const deleteUser = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.params.id);
+
+  if (user) {
+    await Skill.deleteMany({ user: user._id });
+    await User.deleteOne({ _id: user._id });
+    res.status(200).json({ message: 'User deleted successfully' });
+  } else {
+    res.status(404);
+    throw new Error('User not found');
+  }
+});
 
 // Export the functions
-export { registerUser, loginUser, getUserProfile, getAllUsers };
+export { registerUser, loginUser, getUserProfile, getAllUsers, deleteUser };

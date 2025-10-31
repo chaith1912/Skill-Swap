@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { registerUser, loginUser, getUserProfile, getAllUsers} from '../controllers/userController.js';
+import { registerUser, loginUser, getUserProfile, getAllUsers, deleteUser,} from '../controllers/userController.js';
 
 import { protect, admin } from '../middleware/authMiddleware.js';
 
@@ -19,5 +19,6 @@ router.get('/profile', protect, getUserProfile);
 // then 'admin' (check if user.isAdmin is true)
 // then 'getAllUsers' (run the controller)
 router.get('/', protect, admin, getAllUsers);
+router.delete('/:id', protect, admin, deleteUser);
 
 export default router;

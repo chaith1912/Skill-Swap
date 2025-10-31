@@ -8,6 +8,8 @@ import ProtectedRoute from './components/ProtectedRoute.jsx';
 import CreateSkill from './pages/CreateSkill.jsx';
 import AdminRoute from './components/AdminRoute.jsx';
 import UserListPage from './pages/UserListPage.jsx';
+import AdminUserSkillsPage from './pages/AdminUserSkillsPage.jsx';
+
 
 function App() {
   return (
@@ -26,14 +28,15 @@ function App() {
           <Route element={<ProtectedRoute />}> 
             <Route path="/profile" element={<Profile />} />
             <Route path="/create-skill" element={<CreateSkill />} />
-            
+           
             {/* You can add more protected routes here later */}
           </Route>
           
           {/* Admin-Only Protected Routes */}
-          <Route element={<AdminRoute />}> {/* <-- 3. Add AdminRoute wrapper */}
+          <Route element={<AdminRoute />}>
             <Route path="/admin/userlist" element={<UserListPage />} />
-            {/* Add more admin routes here later, e.g., /admin/skilllist */}
+            <Route path="/admin/user/:id" element={<AdminUserSkillsPage />} />
+            {/* Add more admin routes here later */}
           </Route>
 
         </Routes>

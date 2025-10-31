@@ -1,11 +1,8 @@
 body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
   margin: 0;
+  padding: 0;
 }
 
 .form-container {
@@ -15,8 +12,13 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 400px;
+  margin: 5rem auto 0; 
 }
 
+.skill-list-container .form-container {
+  margin: 0 0 2rem 0;
+  width: auto; /* Let it be its natural width */
+}
 .form-container h2 {
   text-align: center;
   color: #333;
@@ -142,8 +144,11 @@ body {
 
 .skills-grid {
   display: grid;
+  /* Creates the responsive, wrapping grid */
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.5rem;
+  /* This is the key: makes all cards in a row the same height */
+  align-items: stretch; 
 }
 
 .skill-card {
@@ -153,10 +158,17 @@ body {
   padding: 1.5rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   position: relative;
+  /* This setup lets the description "grow" */
   display: flex;
-  flex-direction: column;
+  flex-direction: column; 
 }
 
+.skill-card .skill-description {
+  margin-top: 1rem;
+  color: #333;
+  font-size: 1rem;
+  flex-grow: 1; 
+}
 .skill-card h3 {
   margin-top: 0;
   margin-bottom: 0.5rem;
@@ -172,7 +184,7 @@ body {
   margin-top: 1rem;
   color: #333;
   font-size: 1rem;
-  flex-grow: 1; /* Makes description take up available space */
+  flex-grow: 1; 
 }
 
 .skill-type {
